@@ -54,6 +54,19 @@ class current_time:
         except KeyError:
             self.second = str(datetime.datetime.now().second)
         self.weekday = self.week_dict[datetime.datetime.now().weekday()]
+        try:
+            self.gmt_hour = self.time_dict[datetime.datetime.now().utcnow().hour]
+        except KeyError:
+            self.gmt_hour = str(datetime.datetime.now().utcnow().hour)
+        try:
+            self.gmt_minute = self.time_dict[datetime.datetime.now().utcnow().minute]
+        except KeyError:
+            self.gmt_minute = datetime.datetime.now().utcnow().minute
+        try:
+            self.gmt_second = self.time_dict[datetime.datetime.now().utcnow().second]
+        except KeyError:
+            self.gmt_second = datetime.datetime.now().utcnow().second
+        self.microsecond = datetime.datetime.now().microsecond
 
     def update(self):
         self.year = str(datetime.datetime.now().year)
@@ -72,3 +85,4 @@ class current_time:
         except KeyError:
             self.second = str(datetime.datetime.now().second)
         self.weekday = self.week_dict[datetime.datetime.now().weekday()]
+        self.microsecond = datetime.datetime.now().microsecond

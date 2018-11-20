@@ -18,9 +18,13 @@ weekday = current_time.weekday
 hour = current_time.hour
 minute = current_time.minute
 second = current_time.second
+gmt_hour = current_time.gmt_hour
+gmt_minute = current_time.gmt_minute
+gmt_second = current_time.gmt_second
+microsecond = current_time.microsecond
 
 if command == 'time':
-    print('It\'s {}:{}:{}.'.format(hour, minute, second))
+    print('It\'s {}:{}:{}.{}.'.format(hour, minute, second, microsecond))
 elif command == 'date':
     print('It\'s {}, {} {}, {}.'.format(weekday, month, day, year))
 elif command == 'timer':
@@ -39,12 +43,9 @@ elif command == 'alarm':
     alarm_minute = int(split_time[1])
     while True:
         current_time.update()
-        #current_second = int(datetime.datetime.now().second)
         current_second = int(current_time.second)
         if current_second == 0:
-            #current_hour = int(datetime.datetime.now().hour)
             current_hour = int(current_time.hour)
-            #current_minute = int(datetime.datetime.now().minute)
             current_minute = int(current_time.minute)
             if (alarm_hour - current_hour == 0) and (alarm_minute - current_minute == 0):
                 print('Your alarm is set to now.')
@@ -66,6 +67,20 @@ elif command == 'alarm':
                     print('{} hours left.'.format(hour_diff))
                 else:
                     print('{} hours and {} minutes left.'.format(hour_diff, minute_diff))
+#elif command == 'worldclock':
+#    print('BIT: {}:{}:{}'.format(gmt_hour-12, gmt_minute, gmt_second))
+#    print('IDLW: {}:{}:{}'.format(gmt_hour-12, gmt_minute, gmt_second))
+#
+#    print('NUT: {}:{}:{}'.format(gmt_hour, gmt_minute, gmt_second))
+#    print('SST: {}:{}:{}'.format(gmt_hour, gmt_minute, gmt_second))
+#    
+#    print('CKT: {}:{}:{}'.format(gmt_hour, gmt_minute, gmt_second))
+#    print('HST: {}:{}:{}'.format(gmt_hour, gmt_minute, gmt_second))
+#    print('SDT: {}:{}:{}'.format(gmt_hour, gmt_minute, gmt_second))
+#    print('TAHT: {}:{}:{}'.format(gmt_hour, gmt_minute, gmt_second))
+#    
+#    print('MART: {}:{}:{}'.format(gmt_hour-9, gmt_minute-30, gmt_second))
+#    print('
 else:
     print("I'm sorry, that's not a recognized function.")
 
